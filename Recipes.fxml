@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #c89666;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.recipe.RecipeController">
+    <AnchorPane layoutY="53.0" prefHeight="347.0" prefWidth="600.0" style="-fx-background-color: #e1b382;">
+        <Button layoutX="31.0" layoutY="28.0" mnemonicParsing="false" onAction="#onCreateRecipe" text=" Add Recipe" />
+        <TextField layoutX="31.0" layoutY="142.0" promptText="Ingredients" />
+        <TextField fx:id="name" layoutX="31.0" layoutY="90.0" promptText="Name" />
+        <Button layoutX="122.0" layoutY="28.0" mnemonicParsing="false" text="Search Recipe" />
+        <ComboBox fx:id="categoryComboBox" layoutX="31.0" layoutY="228.0" onAction="#initialize" prefWidth="150.0" promptText="Category" />
+        <TextField fx:id="difficultyField" layoutX="31.0" layoutY="188.0" promptText="Difficulty" />
+        <TextField fx:id="newCategoryTextField" layoutX="31.0" layoutY="265.0" onAction="#addNewCategory" promptText="AddCategory" />
+      <TextArea layoutX="237.0" layoutY="26.0" prefHeight="153.0" prefWidth="324.0" />
+    </AnchorPane>
+    <Label fx:id="recipeIdLabel" layoutX="34.0" layoutY="14.0" text="Recipes" textFill="#1e0909">
+        <font>
+            <Font name="Lucida Calligraphy Italic" size="20.0" />
+        </font>
+    </Label>
+    <Button layoutX="527.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: #1e0909;" text="Log in" textFill="WHITE" />
+</AnchorPane>
