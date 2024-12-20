@@ -6,7 +6,7 @@ public class Recipe {
     private String name;
     private String instructions;
     private Category category;
-    private String difficulty; // Или String difficulty, в зависимости от типа данных
+    private String difficulty; 
 
     public Recipe() {
     }
@@ -18,7 +18,6 @@ public class Recipe {
         this.difficulty = difficulty;
     }
 
-    // Геттеры и сеттеры для всех полей (обязательно!)
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public String getName() { return name; }
