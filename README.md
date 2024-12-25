@@ -19,3 +19,8 @@ Abdurazakova Tahira
 ## Roles of Group Members
 
 Abdurazakova Tahira: All functions
+
+## ScreenShots
+
+## UML Diagram
+![UML Diagram](src/main/java/Main/UML/UML1.png)
