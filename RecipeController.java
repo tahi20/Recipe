@@ -1,51 +1,47 @@
 package org.example.recipe;
-import Main.DAO.CategoryDAO;
 import Main.DAO.RecipeDAO;
 import Main.Recipe;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.Objects;
 
 public class RecipeController {
-
     @FXML
-    private TextField nameF;
-    private ObservableList<Category> categories;
+    private Button buttonToScene3;
+    @FXML
+    public Label recipeIdLabel;
+    @FXML
+    private TextField Setname;
     @FXML
     private TextArea instruct;
     @FXML
-    private ComboBox<Category> categoryComboBox;
+    private TextField categoryField;
+
     @FXML
-    private ComboBox<String> difficultyComboBox;
+    private TextField difficultyField;
     @FXML
     private TextField IngredientField;
     @FXML
-    private TextField SearchField;
-    @FXML
-    private TextField AddField;
-    @FXML
-    private Label recipeIdLabel;
-    @FXML
-    private TextField newCategoryTextField;
+    private Button AddButton;
     @FXML
     private Label errorLabel;
 
     private RecipeDAO recipeDAO;
-    private CategoryDAO СategoryDAO;
 
     @FXML
     public void initialize() {
         try {
             this.recipeDAO = new RecipeDAO();
-            this.СategoryDAO = new CategoryDAO();
-            List<Category> categories = CategoryDAO.findAll();
-            categoryComboBox.setItems(FXCollections.observableArrayList(categories));
         } catch (SQLException e) {
             System.err.println("Error initializing DAO in controller: " + e.getMessage());
-            e.printStackTrace();
+
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Database Error");
@@ -56,40 +52,11 @@ public class RecipeController {
     }
 
     @FXML
-    private ListView<Recipe> recipeListView;
-
-    @FXML
-    private void findRecipeByName() {
-        String nameToFind = nameF.getText();
-        if (nameToFind == null || nameToFind.isEmpty()) {
-            errorLabel.setText("Введите имя для поиска.");
-            recipeListView.setItems(FXCollections.observableArrayList());
-            return;
-        }
-
-        try {
-            List<Recipe> foundRecipes = recipeDAO.findByName(nameToFind);
-            recipeListView.setItems(FXCollections.observableArrayList(foundRecipes));
-            if (foundRecipes.isEmpty()) {
-                errorLabel.setText("Рецепты не найдены.");
-            } else {
-                errorLabel.setText("");
-            }
-        } catch (SQLException e) {
-            System.err.println("Ошибка поиска рецепта: " + e.getMessage());
-            e.printStackTrace();
-            errorLabel.setText("Ошибка при поиске рецепта.");
-        }
-    }
-
-
-    @FXML
-    private void CreateRecipe() {
-        errorLabel.setText("");
-        String name = nameF.getText();
+    void onActionCreateRecipe() {
+        String name = Setname.getText();
         String instructions = instruct.getText();
-        Category category = categoryComboBox.getValue();
-        String difficulty = difficultyComboBox.getValue();
+        String category = categoryField.getText();
+        String difficulty = difficultyField.getText();
 
         if (name == null || name.isEmpty() || instructions == null || instructions.isEmpty() || category == null || difficulty == null) {
             errorLabel.setText("Пожалуйста, заполните все поля.");
@@ -98,23 +65,40 @@ public class RecipeController {
 
         try {
             Recipe newRecipe = new Recipe(name, instructions, category, difficulty);
-            int recipeId = recipeDAO.insert(newRecipe);
+            int recipeId = RecipeDAO.insert(newRecipe);
             System.out.println("Рецепт создан с ID: " + recipeId);
             clearFields();
         } catch (SQLException e) {
             System.err.println("Ошибка создания рецепта: " + e.getMessage());
-            e.printStackTrace();
+
             errorLabel.setText("Ошибка создания рецепта: " + e.getMessage());
         }
     }
 
     private void clearFields() {
-        nameF.clear();
+        Setname.clear();
         instruct.clear();
-        difficultyComboBox.setValue(null);
-        categoryComboBox.setValue(null);
+        categoryField.clear();
+        difficultyField.clear();
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Сообщение");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    public void switchToScene3(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Search.fxml")));
+        Scene scene = new Scene(root);
+        Stage window = (Stage) buttonToScene3.getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
 }
+
 
 
 
