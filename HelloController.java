@@ -1,14 +1,22 @@
 package org.example.recipe;
-
 import Main.DAO.UserDAO;
 import Main.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class HelloController {
+    @FXML
+    private Button buttonToScene2;
 
     @FXML
     private Button loginButton;
@@ -18,10 +26,9 @@ public class HelloController {
 
     @FXML
     private TextField login;
-    private final String correctPassword = "12345";
 
     private UserDAO userDAO;
-
+    @FXML
     public void initialize() {
         try {
             userDAO = new UserDAO();
@@ -36,23 +43,19 @@ public class HelloController {
         String enteredLogin = login.getText();
         String enteredPassword = password.getText();
 
-        if (enteredPassword.equals(correctPassword)) {
-            System.out.println("Вы успешно зарегистрировались");
-            showAlert("Вы успешно зарегистрировались");
+        try {
+            boolean bbb = userDAO.checkUserExists(enteredLogin, enteredPassword);
 
-            try {
-                if (!userDAO.checkUserExists(enteredLogin)) {
-                    User newUser = new User(enteredLogin, enteredPassword);
-                    userDAO.insertUser(newUser);
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                showAlert("Ошибка записи в базу данных");
+            if (bbb) {
+                System.out.println("Вы успешно зарегистрировались");
+                showAlert("Вы успешно зарегистрировались");
+
+            } else {
+                showAlert("Неверный пароль");
             }
-
-
-        } else {
-            showAlert("Неверный пароль");
+        }
+        catch (Exception e){
+            showAlert("Couldnt connect to database");
         }
     }
 
@@ -62,5 +65,13 @@ public class HelloController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public void switchToScene2(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Recipes.fxml")));
+        Scene scene = new Scene(root);
+        Stage window = (Stage) buttonToScene2.getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
 }
