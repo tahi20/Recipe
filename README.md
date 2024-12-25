@@ -1,26 +1,22 @@
 # Recipe
 #  Recipe Management system
 
-## Описание
+## Description
 
-Этот проект представляет собой сайт для управления рецептами. Он позволяет пользователям создавать, просматривать, редактировать, удалять и искать рецепты по названию. Приложение также поддерживает категоризацию рецептов и установку уровня сложности.
+This project is a recipe management website. It allows users to create, view, edit, delete, and search for recipes by name. The app also supports recipe categorization and difficulty level setting.
 
-## Требования к проекту
-
-1.  Создание нового рецепта с указанием названия, ингредиентов, инструкций, категории и уровня сложности.
-2.  Просмотр списка всех рецептов.
-3.  Поиск рецептов по названию
-4.  Редактирование существующего рецепта.
-5.  Удаление рецепта.
-6.  Фильтрация рецептов по категории.
-7.  Сортировка рецептов по названию или уровню сложности.
-8.  Отображение подробной информации о рецепте (включая ингредиенты и инструкции).
-9.  Сохранение данных в базе данных.
-
-
-## Состав команды
+## Project Requirements
+1. **InsertUser**: Add User to Database with information such as login, password.
+2. **Insert**: Add new Recipe to Database with information such as name, instructions, difficulty, category, ingredients.
+3. **findByName****: Displays the recipe when you enter the name of recipe
+4. **findByCategory****: Displays all recipes in which the entered category is specified
+5. **DeleteByName**: Delete all information about Recip by name
+6. **Update**: Updating recipe information
+   
+## Team Members
 Abdurazakova Tahira
 
-## Роли участников группы
+## Roles of Group Members
 
-Abdurazakova Tahira: Разработчик Java, разработка DAO
+Abdurazakova Tahira: All functions
+
