@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #c89666;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.recipe.SearchController">
+    <AnchorPane layoutY="43.0" prefHeight="347.0" prefWidth="600.0" style="-fx-background-color: #e1b382;">
+        <Label fx:id="errorLabel1" layoutX="100.0" layoutY="280.0" prefHeight="17.0" prefWidth="114.0" />
+        <TextField fx:id="IngredientField" layoutX="25.0" layoutY="161.0" promptText="Ingredients" />
+        <TextField fx:id="categoryField" layoutX="25.0" layoutY="197.0" promptText="Category" />
+        <TextField fx:id="difficultyField" layoutX="25.0" layoutY="237.0" promptText="Difficulty" />
+        <TextArea fx:id="instruct" layoutX="25.0" layoutY="270.0" prefHeight="38.0" prefWidth="176.0" promptText="Instructions" />
+        <Label fx:id="errorLabel" layoutX="32.0" layoutY="96.0" prefHeight="17.0" prefWidth="114.0" />
+        <ListView fx:id="recipeListView" layoutX="216.0" layoutY="20.0" prefHeight="152.0" prefWidth="168.0" />
+        <TextField fx:id="name1" layoutX="25.0" layoutY="119.0" onAction="#onActionFindRecipeByName" promptText="Name" />
+      <Button fx:id="searchButton" layoutX="25.0" layoutY="58.0" mnemonicParsing="false" onAction="#onActionFindRecipeByName" text="Search Recipe" />
+      <Button fx:id="UpdateButton" layoutX="25.0" layoutY="321.0" mnemonicParsing="false" onAction="#handleUpdateButton" text="Update" />
+      <TextField fx:id="searchField" layoutX="25.0" layoutY="20.0" onAction="#onActionFindRecipeByName" promptText="Name" />
+      <Button fx:id="searchButton1" layoutX="247.0" layoutY="245.0" mnemonicParsing="false" onAction="#onActionFindRecipeByCategory" text="Search Recipe" />
+      <TextField fx:id="searchField1" layoutX="247.0" layoutY="210.0" onAction="#onActionFindRecipeByName" promptText="Category" />
+      <Button fx:id="DeleteButton" layoutX="247.0" layoutY="277.0" mnemonicParsing="false" onAction="#handleDeleteButton" text="Delete recipe" />
+    </AnchorPane>
+   <Button fx:id="loginButton" layoutX="514.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #1e0909;" text="Log in" textFill="WHITE" />
+   <Label fx:id="recipeIdLabel" layoutX="31.0" layoutY="11.0" text="Recipes" textFill="#1e0909">
+      <font>
+         <Font name="Lucida Calligraphy Italic" size="20.0" />
+      </font>
+   </Label>
+
+</AnchorPane>
