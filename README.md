@@ -19,3 +19,13 @@ Abdurazakova Tahira
 ## Roles of Group Members
 
 Abdurazakova Tahira: All functions
+
+## ScreenShots
+![Autorization](src/main/java/Main/ScreenShot/Autorization.png)
+![Insert](src/main/java/Main/ScreenShot/Insert.png)
+![Output](src/main/java/Main/ScreenShot/Output.png)
+![Search](src/main/java/Main/ScreenShot/Search.png)
+
+## UML Diagram
+![UML Diagram](src/main/java/Main/UML/UML1.png)
+
