@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #c89666;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.recipe.HelloController">
    <children>
       <AnchorPane layoutY="53.0" prefHeight="347.0" prefWidth="600.0" style="-fx-background-color: #e1b382;">
@@ -18,7 +17,7 @@
             </Label>
             <TextField fx:id="login" layoutX="182.0" layoutY="92.0" prefHeight="25.0" prefWidth="246.0" promptText="Login" />
             <TextField fx:id="password" layoutX="182.0" layoutY="149.0" prefHeight="25.0" prefWidth="246.0" promptText="Password" />
-            <Button fx:id="loginButton1" layoutX="276.0" layoutY="201.0" mnemonicParsing="false" style="-fx-background-color: #1e0909;" text="Log in" textFill="WHITE" />
+            <Button fx:id="loginButton" layoutX="276.0" layoutY="201.0" mnemonicParsing="false" onAction="#onActionLogin" style="-fx-background-color: #1e0909;" text="Log in" textFill="WHITE" />
          </children>
       </AnchorPane>
       <Label layoutX="34.0" layoutY="14.0" text="Recipes" textFill="#1e0909">
@@ -26,6 +25,6 @@
             <Font name="Lucida Calligraphy Italic" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="loginButton" layoutX="522.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: #1e0909;" text="Log in" textFill="WHITE" />
+      <Button fx:id="buttonToScene2" layoutX="522.0" layoutY="18.0" mnemonicParsing="false" onAction="#switchToScene2" style="-fx-background-color: #1e0909;" text="Sign in" textFill="WHITE" />
    </children>
 </AnchorPane>
