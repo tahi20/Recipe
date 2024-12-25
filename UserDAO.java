@@ -5,14 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.*;
-import Main.DBConnection; // Импортируем DatabaseConnection
-
-
+import Main.DBConnection;
 public class UserDAO {
     private final Connection conn;
 
-    public UserDAO() throws SQLException { // Обрабатываем SQLException
-        conn = DBConnection.getConnection(); // Получаем соединение из Singleton
+    public UserDAO() throws SQLException {
+        conn = DBConnection.getConnection();
     }
 
     public void insertUser(User user) throws SQLException {
@@ -25,10 +23,11 @@ public class UserDAO {
         }
     }
 
-    public boolean checkUserExists(String login) throws SQLException {
-        String sql = "SELECT COUNT(*) FROM users WHERE login = ?";
+    public boolean checkUserExists(String login, String password) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM users WHERE login = ? and password = ?";
         try (PreparedStatement statement = conn.prepareStatement(sql)) {
             statement.setString(1, login);
+            statement.setString(2, password);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     return resultSet.getInt(1) > 0;
