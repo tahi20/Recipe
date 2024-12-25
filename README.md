@@ -25,6 +25,7 @@ Abdurazakova Tahira: All functions
 ![Insert](src/main/java/Main/ScreenShot/Insert.png)
 ![Output](src/main/java/Main/ScreenShot/Output.png)
 ![Search](src/main/java/Main/ScreenShot/Search.png)
+![Database](src/main/java/Main/ScreenShot/Database.png)
 
 ## UML Diagram
 ![UML Diagram](src/main/java/Main/UML/UML1.png)
